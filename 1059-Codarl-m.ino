@@ -16,7 +16,9 @@ WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "asia.pool.ntp.org", 28800, 60000);
 
 void setup() {
+  
   Serial.begin(115200);
+  
   lc.shutdown(0,false);
   lc.setIntensity(0,15);
   lc.clearDisplay(0);
@@ -63,13 +65,16 @@ void loop() {
   Serial.println(second_);
   
   last_second = second_;
-    lc.setDigit(0,7,(byte)Digit7,false);
-    lc.setDigit(0,6,(byte)Digit6,true);
-    lc.setDigit(0,5,(byte)Digit5,false);
-    lc.setDigit(0,4,(byte)Digit4,true);
-    lc.setDigit(0,3,(byte)Digit3,false);
-    lc.setDigit(0,2,(byte)Digit2,true);
-    lc.setDigit(0,1,(byte)Digit1,false);
-    lc.setDigit(0,0,(byte)Digit0,false);
+
+  lc.setDigit(0,7,(byte)Digit7,false);
+  lc.setDigit(0,6,(byte)Digit6,true);
+  lc.setDigit(0,5,(byte)Digit5,false);
+  lc.setDigit(0,4,(byte)Digit4,true);
+  lc.setDigit(0,3,(byte)Digit3,false);
+  lc.setDigit(0,2,(byte)Digit2,true);
+  lc.setDigit(0,1,(byte)Digit1,false);
+  lc.setDigit(0,0,(byte)Digit0,false);
+     
   }
+
 }
