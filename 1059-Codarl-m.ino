@@ -2,15 +2,19 @@
 #include <WiFiUdp.h>
 #include <NTPClient.h>               
 #include <TimeLib.h>  
-#include "LedControl.h"
+#include <LedControl.h>
+#include "WAC.h"
 
-LedControl lc=LedControl(D8,D7,D6,1);
+LedControl lc=LedControl(D0,D8,D4,1); //DIN,CLK,CS,display
 
 byte last_second, second_, minute_, hour_, day_;  
 int Digit7,Digit6,Digit5,Digit4,Digit3,Digit2,Digit1,Digit0;
 
-char* ssid = "";  //wifi ssid
-char* password = "";   //wifi password
+const char *ssid = SSID;
+const char *password = PW;
+//Create WAC.h to store creds
+//#define SSID "Wireless Access Point"
+//#define PW "Password"
 
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "asia.pool.ntp.org", 28800, 60000);
