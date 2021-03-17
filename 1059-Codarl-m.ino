@@ -208,7 +208,7 @@ void loop() {
   lc.setDigit(0,1,(byte)Digit1,false);
   lc.setDigit(0,0,(byte)Digit0,false);
   lcd.setCursor(0,0); 
-  lcd.print(ssid);    
+  lcd.print("Local IP Address");    
   lcd.setCursor(0,1);   
   lcd.print(WiFi.localIP());   
   }
