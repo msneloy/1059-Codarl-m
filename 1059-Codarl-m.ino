@@ -1,16 +1,16 @@
 #include <ESP8266WiFi.h>
 #include <LiquidCrystal_I2C.h> //https://codeload.github.com/johnrickman/LiquidCrystal_I2C/zip/master
 #include <WiFiUdp.h>
-#include <NTPClient.h>               
-#include <TimeLib.h>  
+#include <NTPClient.h>
+#include <TimeLib.h>
 #include <LedControl.h>
 #include <ESPAsyncWebServer.h>
 #include "WAC.h"
 
-LedControl lc=LedControl(D0,D3,D4,1); //DIN,CLK,CS,display
-LiquidCrystal_I2C lcd(0x27, 16, 2);  
-byte last_second, second_, minute_, hour_, day_;  
-int Digit7,Digit6,Digit5,Digit4,Digit3,Digit2,Digit1,Digit0;
+LedControl lc = LedControl(D0, D3, D4, 1); //DIN,CLK,CS,display
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+byte last_second, second_, minute_, hour_, day_;
+int Digit7, Digit6, Digit5, Digit4, Digit3, Digit2, Digit1, Digit0;
 
 const char *ssid = SSID;
 const char *password = PW;
@@ -24,7 +24,7 @@ const char *password = PW;
 int relayGPIOs[NUM_RELAYS] = {D5, D6, D7, D8};
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "asia.pool.ntp.org", 28800, 60000);
-const char* PARAM_INPUT_1 = "relay";  
+const char* PARAM_INPUT_1 = "relay";
 const char* PARAM_INPUT_2 = "state";
 AsyncWebServer server(80);
 
@@ -177,7 +177,7 @@ void loop() {
   unsigned long unix_epoch = timeClient.getEpochTime();
     second_ = second(unix_epoch);
   if (last_second != second_) {
- 
+
 
     minute_ = minute(unix_epoch);
     hour_   = hour(unix_epoch);
